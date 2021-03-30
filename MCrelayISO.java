@@ -277,8 +277,14 @@ class SiblinkHandlerThread extends Thread {
   final int SLNroConn;
 
   static byte b[] = new byte[8192];
-  String str = "", str2 =
-    "ISO0040000400800822000000000000004000000000000001234561234567890301";
+  String str = "";
+//  str2 =
+//    "ISO0040000400800822000000000000004000000000000001234561234567890301";
+
+  String str2 =
+    "ISO0140000100220B23A800128E0941A000000001600011AA50000000000000000mmddhhmmss000002hhmmssmmddmmddmmdd11((acq.ins))37<track3.............................>123456789012tes1tes1tes1tes1term.term.term.locationlocationlocationlocationlocation032pin.pin.pin.pin.023N99999999999ataadddata*012**term.dat**013*card issuer*016pinopinopinopino11recinstcode28052004664928++++++++++++++++28............................033termaddrtermaddrtermaddrtermaddr.001.001.043,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
+
+    
   String str4 =
     "ISO0140000130200B23A800128E0961E000000001600011AF31000000000000139mmddhhmmss015457hhmmssmmddmmddmmdd11           3799990386986532000=7412               000555      009900054       00000000000    00000000000000000000000000000000000000AR032FFFFFFFFFFFFFFFF023                       24764XJ8G7V95GWXD9EMPYR0Z          FAC0386272951964703860001003000046011133001004601113       0386230589027643860036205000040056918036004005691       4058960001082013   CASTRO, EMILCE EVANGELINA               NND0                                     012LINKLNK1+0000130386LNK11100P02554                       016                11614        28001004601113                28                            033000000000000000000000000000000000001 001 0430000000000000000000000000000000000000000000";
 
