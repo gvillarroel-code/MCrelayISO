@@ -6,6 +6,9 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+
 
 class MCrelayISO {
   public static int MaxConnections = 9000;
@@ -34,8 +37,20 @@ class MCrelayISO {
   public static BufferedWriter Bufferedfw;
   public static String KillConexionPorTimeOut;
   public static int KillConexionTimeOut;
+  public static String SfbFechaHoy;
+
 
   public static void main(String args[]) throws Exception {
+
+    File filefecha = new File("SFBFECHAHOT.txt");
+    BufferedReader br = new BufferedReader(new FileReader(filefecha));
+  
+    SfbFechaHoy = br.readLine()
+    System.out.println("\nFecha SFB\n");
+    System.out.println("\n---------\n");
+    System.out.println(SfbFechaHoy);
+    System.out.println("\n---------\n");
+
     //  LEO ARCHIVO INI
     Properties p = new Properties();
 
@@ -276,6 +291,13 @@ class SiblinkHandlerThread extends Thread {
   final Socket s;
   final int SLNroConn;
 
+  public static Calendar x;
+  public static String fecha;
+  public static String tramafinalmmdd;
+  public static String tramafinalhhmmss;
+  public static Format f;
+
+
   static byte b[] = new byte[8192];
   String str = "";
 //  str2 =
@@ -420,6 +442,21 @@ class SiblinkHandlerThread extends Thread {
     int NroConnE
   ) {
     int i = 0;
+
+
+//  MODIFICO VALORES DE LA TRAMA (str2) CON FECHA Y HORA   
+//
+
+    x = Calendar.getInstance();
+    fecha = Integer.toString(x.get(x.MONTH) + 101).substring(1, 3) + Integer.toString(x.get(x.DATE) + 100).substring(1, 3);
+    f = new SimpleDateFormat("HHmmss");
+    tramafinalhhmmss = f.format(new Date());
+    tramafinalmmdd = str2.replaceAll("mmdd", fecha);
+    tramafinalhhmmss = tramafinalmmdd.replaceAll("hhmmss", tramafinalhhmmss);
+    str2 = tramafinalhhmmss;
+
+//
+
 
     //      Escribo ECO .....
     try {
